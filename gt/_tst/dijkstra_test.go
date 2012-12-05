@@ -1,7 +1,6 @@
-package dijkstra
+package gt
 
 import (
-	"gt"
 	"testing"
 )
 
@@ -12,7 +11,7 @@ func assert(t bool) {
 }
 
 func TestDijkstra(t *testing.T) {
-	var g gt.Matrix
+	var g Matrix
 	g.N = 4
 	g.A = []int64{
 		0, 1, 0, 0,

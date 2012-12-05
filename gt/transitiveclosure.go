@@ -1,4 +1,4 @@
-// Floyd-Warshall algorithm for shortest path or transitive closure
+// Copyright 2012 The Gt Authors. All rights reserved. See the LICENSE file.
 
 package gt
 
@@ -6,6 +6,7 @@ import (
 	"container/list"
 )
 
+// TransitiveClosure of a given graph G connects vertices u and v iff there is a path in G from u to v. Thus the transitive closure of any connected graph is complete. 
 func (G *Matrix) TransitiveClosure(N *Matrix) {
 	var i, j, k int64
 	for i = 0; i < G.N; i++ {
@@ -24,6 +25,7 @@ func (G *Matrix) TransitiveClosure(N *Matrix) {
 	}
 }
 
+// ShortestPath implements the algorithm for the shortest path.
 func (G *Matrix) ShortestPath(src, tar int64, N *Matrix) (p *list.List) {
 	p = list.New()
 	if G.Get(src, tar) == 0 {

@@ -1,9 +1,0 @@
-< $GOROOT/src/9bootstrap.mk
-
-TARG=gt
-GOFILES=\
-	matrix.go\
-	qap.go\
-
-< $GOROOT/src/mk.pkg
-

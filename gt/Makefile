@@ -1,9 +1,0 @@
-include $(GOROOT)/src/Make.inc
-
-TARG=gt
-GOFILES=\
-	matrix.go\
-	qap.go\
-	transitiveclosure.go\
-
-include $(GOROOT)/src/Make.pkg

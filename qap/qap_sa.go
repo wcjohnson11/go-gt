@@ -1,13 +1,13 @@
-// Solve the Quadratic Assignment problem using simulated annealing
+// Copyright 2012 The Gt Authors. All rights reserved. See the LICENSE file.
 
+// Solves the Quadratic Assignment problem using simulated annealing. 
 package main
 
 import (
 	"flag"
 	"fmt"
 	"os"
-	. "go-gt.googlecode.com/hg/gt"
-
+	. "code.google.com/p/go-gt/gt"
 )
 
 var verbose bool

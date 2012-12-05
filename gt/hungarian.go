@@ -1,15 +1,16 @@
-// Hungarian algorithm to solve the assigment problem
+// Copyright 2012 The Gt Authors. All rights reserved. See the LICENSE file.
 
-package hungarian
+package gt
+
+// Hungarian algorithm to solve the assigment problem. 
 
 import (
-	"go-gt.googlecode.com/hg/gt"
 	"math"
 )
 
 type env struct {
 	m, n   int64
-	g      *gt.Matrix
+	g      *Matrix
 	T, S   []bool
 	slack  []int64
 	slackx []int64
@@ -37,20 +38,6 @@ func newEnv(n int64) *env {
 		e.yx[i] = -1
 	}
 	return e
-}
-
-func min(a, b int64) int64 {
-	if a < b {
-		return a
-	}
-	return b
-}
-
-func max(a, b int64) int64 {
-	if a > b {
-		return a
-	}
-	return b
 }
 
 func (e *env) update() {
@@ -169,7 +156,7 @@ func (e *env) augment() {
 	}
 }
 
-func inits(g *gt.Matrix) (e *env) {
+func initH(g *Matrix) (e *env) {
 	var i, j int64
 	e = newEnv(g.N)
 	e.g = g
@@ -182,8 +169,9 @@ func inits(g *gt.Matrix) (e *env) {
 	return e
 }
 
-func Hungarian(g *gt.Matrix) (xy, yx []int64) {
-	e := inits(g)
+// Hungarian uses the Hungarian algorithm to solve the assigment problem. 
+func Hungarian(g *Matrix) (xy, yx []int64) {
+	e := initH(g)
 	e.augment()
 	return e.xy, e.yx
 }

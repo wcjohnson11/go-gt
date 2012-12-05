@@ -1,7 +1,6 @@
-package hungarian
+package gt
 
 import (
-	"gt"
 	"testing"
 )
 
@@ -12,7 +11,7 @@ func assert(t bool) {
 }
 
 func TestHungarian(t *testing.T) {
-	g := new(gt.Matrix)
+	g := new(Matrix)
 	g.N = 4
 	g.A = []int64{
 		9, 1, 9, 9,

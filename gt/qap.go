@@ -1,5 +1,8 @@
-// Solve the Quadratic Assignment Problem
+// Copyright 2012 The Gt Authors. All rights reserved. See the LICENSE file.
+
 package gt
+
+// Solve the Quadratic Assignment Problem. 
 
 import (
 	"bufio"
@@ -10,20 +13,6 @@ import (
 )
 
 var Verbose bool
-
-func max(a int64, b int64) int64 {
-	if a > b {
-		return a
-	}
-	return b
-}
-
-func min(a int64, b int64) int64 {
-	if a > b {
-		return b
-	}
-	return a
-}
 
 func Load(in *os.File) (int64, *Matrix, *Matrix) {
 	rd := bufio.NewReader(in)
@@ -64,7 +53,7 @@ func delta(a *Matrix, b *Matrix, p Vector, r int64, s int64) (d int64) {
 
 }
 
-func inits(a *Matrix, b *Matrix, w Vector, c int64) (int64, int64, int64) {
+func initQAP(a *Matrix, b *Matrix, w Vector, c int64) (int64, int64, int64) {
 	var (
 		dmin, dmax int64
 	)
@@ -90,7 +79,7 @@ func QAP_SolveSA(a *Matrix, b *Matrix, v Vector, m int) int64 {
 	w := make(Vector, n)
 	w.Copy(v)
 	cc := cost(a, b, v)
-	c, dmin, dmax := inits(a, b, w, cc)
+	c, dmin, dmax := initQAP(a, b, w, cc)
 	var t0 float64 = float64(dmin + (dmax-dmin)/10.0)
 	tf := float64(dmin)
 	beta := (t0 - tf) / (float64(m) * t0 * tf)

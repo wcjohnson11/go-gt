@@ -1,9 +1,10 @@
+// Copyright 2012 The Gt Authors. All rights reserved. See the LICENSE file.
+
+package gt
+
 // Dijkstra's Algorithm for the shortest path.
 
-package dijkstra
-
 import (
-	"go-gt.googlecode.com/hg/gt"
 	"math"
 )
 
@@ -14,7 +15,7 @@ type heap struct {
 	w []int64
 }
 
-func new(n int64) (h heap) {
+func newHeap(n int64) (h heap) {
 	h.n = n
 	h.i = make([]int64, n)
 	h.a = make([]int64, n)
@@ -76,7 +77,7 @@ func (h *heap) pop() (i int64) {
 	return i
 }
 
-func (h heap) update(p []int64, i int64, G *gt.Matrix) {
+func (h heap) update(p []int64, i int64, G *Matrix) {
 	var j int64
 	for j = 0; j < G.N; j++ {
 		if G.Get(i, j) > 0 {
@@ -89,9 +90,10 @@ func (h heap) update(p []int64, i int64, G *gt.Matrix) {
 	}
 }
 
-func Dijkstra(G *gt.Matrix, i int64) (p []int64) {
+// Dijkstra implements the Dijkstra's Algorithm for the shortest path.
+func Dijkstra(G *Matrix, i int64) (p []int64) {
 	p = make([]int64, G.N)
-	h := new(G.N)
+	h := newHeap(G.N)
 	h.w[i] = 0
 	h.swap(i, 0)
 	for h.n > 0 {

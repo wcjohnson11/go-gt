@@ -8,6 +8,7 @@ import (
 )
 
 type Vector []int64
+
 type Matrix struct {
 	N int64
 	A []int64
